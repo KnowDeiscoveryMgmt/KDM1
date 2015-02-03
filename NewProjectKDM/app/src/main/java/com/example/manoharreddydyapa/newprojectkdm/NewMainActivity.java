@@ -6,22 +6,33 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 
 public class NewMainActivity extends Activity {
-
+    WebView WV;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_main);
+
     }
 
     public void google(View v){
-        Uri uri=Uri.parse("http://www.google.com");
-
+        /*Uri uri=Uri.parse("http://www.google.com");
         Intent intent=new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+        */
+
+        WV= (WebView) findViewById(R.id.webView);
+        WebSettings webSettings = WV.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        WV.loadUrl("https://www.google.com");
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
